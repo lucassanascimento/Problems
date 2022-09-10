@@ -132,7 +132,6 @@ let mel = (array, total) => {
 };
 
 const numberDuplicated = (array) => {
-  console.time();
   const numberIndex = [];
   const results = [];
 
@@ -156,7 +155,6 @@ const numberDuplicated = (array) => {
       result = results[i].number;
     }
   }
-  console.timeEnd();
   return result;
 };
 
@@ -399,9 +397,9 @@ let cartasThales = (cardsQtd) => {
     cards.push(i);
   }
 
-  let as = 0
+  let as = 0;
   while (cards.length > 1) {
-    console.log(as += 1)
+    console.log((as += 1));
     let a = cards.shift();
     let b = cards.shift();
     giveaway.push(a);
@@ -410,6 +408,46 @@ let cartasThales = (cardsQtd) => {
 
   console.log('Giveaway cards', giveaway);
   console.log('Developer card', cards);
+};
+
+const strongPasswordAvelino= (n, password) => {
+  const numbers = '0123456789';
+  const lower_case = 'abcdefghijklmnopqrstuvwxyz';
+  const upper_case = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const special_characters = '!@#$%^&*()-+';
+
+  let nCount = 0;
+  let lCount = 0;
+  let uCount = 0;
+  let sCount = 0;
+
+  for (let i = 0; i < password.length; i++) {
+    if (numbers.includes(password[i])) {
+      nCount += 1;
+    } else if (lower_case.includes(password[i])) {
+      lCount += 1;
+    } else if (upper_case.includes(password[i])) {
+      uCount += 1;
+    } else if (special_characters.includes(password[i])) {
+      sCount += 1;
+    }
+  }
+  let total = 0;
+  if (nCount === 0) {
+    total += 1;
+  }
+  if (lCount === 0) {
+    total += 1;
+  }
+  if (uCount === 0) {
+    total += 1;
+  }
+  if (sCount === 0) {
+    total += 1;
+  }
+
+  if (total > 6 - n) return total;
+  return Math.max(6 - n, 0);
 };
 
 (() => {
@@ -427,5 +465,6 @@ let cartasThales = (cardsQtd) => {
   // console.log(MakeArrayConsecutive2([1, 2, 3, 4, 5, 10]));
   // robot(['R', 'R', 'R', 1]);
   // robotThales(['R', 'R', 'R', 1]);
-  cartasThales(10);
+  // cartasThales(10);
+  console.log(strongPassword(4, '#Ha1'));
 })();
